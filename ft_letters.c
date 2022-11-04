@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_letters.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreis-de <rreis-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 16:24:51 by rreis-de          #+#    #+#             */
-/*   Updated: 2022/11/03 12:21:44 by rreis-de         ###   ########.fr       */
+/*   Created: 2022/11/03 13:04:22 by rreis-de          #+#    #+#             */
+/*   Updated: 2022/11/03 14:28:42 by rreis-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_printf_c(int c, int *ptl)
 {
-	long int	nbr;
+	ft_putchar_fd(c, 1);
+	(*ptl)++;
+}
 
-	nbr = (long)n;
-	if (nbr == -2147483648)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putchar_fd('2', fd);
-		ft_putnbr_fd(147483648, fd);
-	}
-	else if (nbr < 0)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(-nbr, fd);
-	}
-	else if (nbr > 9)
-	{
-		ft_putnbr_fd(nbr / 10, fd);
-		ft_putnbr_fd(nbr % 10, fd);
-	}
-	else if (nbr < 10)
-		ft_putchar_fd(nbr + 48, fd);
+void	ft_printf_s(char *s, int *ptl)
+{
+	ft_putstr_fd(s, 1);
+	(*ptl) += ft_strlen(s);
+}
+
+void	ft_printf_p(long unsigned int n, int *ptl)
+{
+	ft_putstr_fd("0x", 1);
+	(*ptl) += 2;
+	ft_itoa_base(n, "0123456789abcdef", ptl);
 }
