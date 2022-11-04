@@ -6,7 +6,7 @@
 /*   By: rreis-de <rreis-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:10:44 by rreis-de          #+#    #+#             */
-/*   Updated: 2022/11/03 14:30:35 by rreis-de         ###   ########.fr       */
+/*   Updated: 2022/11/04 17:11:11 by rreis-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@ void	ft_data_type(char data_type, va_list args, int *ptl)
 	else if (data_type == 'u')
 		ft_printf_u(va_arg(args, long unsigned int), ptl);
 	else if (data_type == 'x')
-		ft_itoa_base(va_arg(args, int), "0123456789abcdef", ptl);
+		ft_itoa_base(va_arg(args, unsigned int), "0123456789abcdef", ptl);
 	else if (data_type == 'X')
-		ft_itoa_base(va_arg(args, int), "0123456789ABCDEF", ptl);
+		ft_itoa_base(va_arg(args, unsigned int), "0123456789ABCDEF", ptl);
+	else if (data_type == '%')
+	{
+		ft_putchar_fd('%', 1);
+		(*ptl)++;
+	}
 }
 
 int	ft_printf(const char *placeholders, ...)
@@ -58,15 +63,23 @@ int	ft_printf(const char *placeholders, ...)
 	va_end(args);
 	return (len);
 }
-
+/*
 int	main(void)
 {
 	//ft_printf("%u%s%c\n", 42, "hello world", 'a');
 	//printf("%u%s%c\n", 42, "hello world", 'a');
-	printf("%d\n", ft_printf("%u%s%c\n", 42, "hello world", 'a'));
-	printf("%d\n", printf("%u%s%c\n", 42, "hello world", 'a'));
+	//printf("%d\n", ft_printf("%d%s%c\n", 42, "hello world", 'a'));
+	//printf("%d\n", printf("%d%s%c\n", 42, "hello world", 'a'));
 	//int a = 42;
 	//printf("%p\n", (void *) &a);
 	//ft_printf("%p\n", (void *) &a);
+	//ft_printf(" NULL %s NULL ", NULL);
+	//printf(" NULL %s NULL ", NULL);
+	//printf(" %p %p ", LONG_MIN, LONG_MAX);
+	//ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
+	//printf(" %p %p ", LONG_MIN, LONG_MAX);
+	//printf(" %u ", LONG_MAX);
+	printf("%d\n", printf(" %% "));
+	printf("%d\n", ft_printf(" %% "));
 	return (0);
-}
+}*/
