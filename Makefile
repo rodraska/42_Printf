@@ -6,87 +6,40 @@
 #    By: rreis-de <rreis-de@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 14:29:07 by rreis-de          #+#    #+#              #
-#    Updated: 2022/11/03 13:45:23 by rreis-de         ###   ########.fr        #
+#    Updated: 2023/01/30 15:49:42 by rreis-de         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libftprintf.a
+NAME = printf
 
 SRCS = ft_printf.c \
 		ft_letters.c \
-		ft_numbers.c
-
-SRCSF	=  ft_atoi.c \
-		ft_isdigit.c \
-		ft_isalnum.c \
-		ft_isalpha.c \
-		ft_isascii.c \
-		ft_isprint.c \
+		ft_numbers.c \
 		ft_itoa.c \
-		ft_memchr.c \
-		ft_memcmp.c \
-		ft_memcpy.c \
-		ft_memmove.c \
-		ft_memset.c \
-		ft_calloc.c \
 		ft_putchar_fd.c \
-		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 		ft_putstr_fd.c \
-		ft_strchr.c \
-		ft_strrchr.c \
-		ft_striteri.c \
-		ft_bzero.c \
-		ft_strjoin.c \
-		ft_strlen.c \
-		ft_strlcat.c \
-		ft_strlcpy.c \
-		ft_strncmp.c \
-		ft_strdup.c \
-		ft_strnstr.c \
-		ft_substr.c \
-		ft_tolower.c \
-		ft_strmapi.c \
-		ft_split.c \
-		ft_toupper.c \
-		ft_strtrim.c
+		ft_strlen.c
 
-SRCSD	= $(addprefix libft/, $(SRCSF))
-
-LIBFT = libft/libft.a
-
-OBJS	= ${SRCS:.c=.o}
-
-OBJSD	= ${SRCSF:.c=.o}
-
-INCS	= ft_printf.h
-
-LIBC	= ar rcs
-
-CC		= clang
+CC		= cc
 
 RM		= rm -f
 
 CFLAGS	= -Wall -Wextra -Werror
 
+HEADERS = ft_printf.h
 
-${NAME}: libft.a ${OBJS}
-	cp ${LIBFT} .
-	mv libft.a ${NAME}
-	${LIBC} ${NAME} ${OBJS}
+OBJS	= ${SRCS:.c=.o}
 
 all: ${NAME}
 
+${NAME}: ${OBJS}
+	$(CC) $(CFLAGS) ${OBJS} -o ${NAME} 
+
 clean:
-	${RM} ${OBJS} ${OBJSD}
+	${RM} ${OBJS}
 
-libft.a:
-	cd libft && ${MAKE} all
-
-lib_fclean:
-	cd libft && ${MAKE} fclean
-
-fclean: clean lib_fclean
+fclean: clean
 	${RM} ${NAME}
 
 re: fclean all

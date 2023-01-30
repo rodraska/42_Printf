@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreis-de <rreis-de@42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 16:24:00 by rreis-de          #+#    #+#             */
-/*   Updated: 2022/10/22 16:24:00 by rreis-de         ###   ########.fr       */
+/*   Created: 2022/10/22 16:24:55 by rreis-de          #+#    #+#             */
+/*   Updated: 2022/10/22 16:24:55 by rreis-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isdigit(int i)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (i >= 48 && i <= 57)
-		return (1);
-	return (0);
+	write(fd, s, ft_strlen(s));
 }

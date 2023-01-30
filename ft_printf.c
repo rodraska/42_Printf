@@ -6,7 +6,7 @@
 /*   By: rreis-de <rreis-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:10:44 by rreis-de          #+#    #+#             */
-/*   Updated: 2022/11/04 17:11:11 by rreis-de         ###   ########.fr       */
+/*   Updated: 2022/11/17 20:00:12 by rreis-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,10 @@ int	ft_printf(const char *placeholders, ...)
 	va_end(args);
 	return (len);
 }
-/*
+
 int	main(void)
 {
-	//ft_printf("%u%s%c\n", 42, "hello world", 'a');
-	//printf("%u%s%c\n", 42, "hello world", 'a');
-	//printf("%d\n", ft_printf("%d%s%c\n", 42, "hello world", 'a'));
-	//printf("%d\n", printf("%d%s%c\n", 42, "hello world", 'a'));
-	//int a = 42;
-	//printf("%p\n", (void *) &a);
-	//ft_printf("%p\n", (void *) &a);
-	//ft_printf(" NULL %s NULL ", NULL);
-	//printf(" NULL %s NULL ", NULL);
-	//printf(" %p %p ", LONG_MIN, LONG_MAX);
-	//ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
-	//printf(" %p %p ", LONG_MIN, LONG_MAX);
-	//printf(" %u ", LONG_MAX);
-	printf("%d\n", printf(" %% "));
-	printf("%d\n", ft_printf(" %% "));
+	printf("%x\n", -1);
+	ft_printf("%x\n", -1);
 	return (0);
-}*/
+}

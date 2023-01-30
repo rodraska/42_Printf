@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreis-de <rreis-de@42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 16:24:02 by rreis-de          #+#    #+#             */
-/*   Updated: 2022/10/22 16:24:02 by rreis-de         ###   ########.fr       */
+/*   Created: 2022/10/22 16:25:57 by rreis-de          #+#    #+#             */
+/*   Updated: 2022/10/22 16:25:57 by rreis-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isprint(int i)
+size_t	ft_strlen(const char *str)
 {
-	if (i >= 32 && i <= 126)
-		return (1);
-	return (0);
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
